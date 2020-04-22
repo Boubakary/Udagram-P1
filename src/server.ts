@@ -30,17 +30,17 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   /**************************************************************************** */
 
   app.get( "/filteredimage", async ( req, res ) => {
-    // publicly accessible image URL
+    
     const {image_url} = req.query;
 
-    // Verifying image_url query and validating url
+    // Verifying image_url query
     if (!image_url) {
         return res.status(400).send('`image_url` is required!');
     }
 
     if (image_url) {
 
-    // Filter the image using helper function
+    // Filter the image using function
     filterImageFromURL(image_url).then((data) => {
 
         // Send the filtered image file in the response
@@ -49,7 +49,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
             return res.status(500).send('Something went wrong!');
         } else {
 
-          // Deleting file using helper function
+          // Deleting file using function
           deleteLocalFiles([data]).catch((err) => {
           if (err) {
               return res.status(400).send('The `image_url` is bad!');
