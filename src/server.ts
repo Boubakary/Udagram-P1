@@ -35,7 +35,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
     // Verifying image_url query
     if (!image_url) {
-        return res.status(400).send('`image_url` is required!');
+        return res.status(400).send('`image_url` is required! Please insert here');
     }
 
     if (image_url) {
